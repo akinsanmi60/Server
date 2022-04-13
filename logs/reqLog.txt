@@ -89,3 +89,14 @@
 20220413	20:51:52	ba165054-f1dd-4aa5-8194-0e37d95fc51b	GET	undefined	/
 20220413	20:51:52	e388b91a-8e9f-4b04-9801-9ac7d55b9aa5	GET	undefined	/css/style.css
 20220413	20:51:58	49a5554d-2e45-4a3e-905a-533a600bc88e	GET	undefined	/css/style.css
+20220413	23:07:31	1a2c38c0-b40b-4816-8b4f-a964c9f373c8	OPTIONS	http://localhost:3000	/auth
+20220413	23:07:31	5085edf5-743c-4317-8650-bb333e35ffd9	POST	http://localhost:3000	/auth
+20220413	23:07:41	753c740e-3601-437a-ac6d-eac34da3950d	OPTIONS	http://localhost:3000	/auth
+20220413	23:07:41	be3cc1fd-6cfc-4f16-a0da-0628d9db1524	POST	http://localhost:3000	/auth
+20220413	23:07:42	e77ff8e9-b754-4960-b178-b1a352ebc514	POST	http://localhost:3000	/auth
+20220413	23:11:28	bef5c489-fbc6-4bf5-bb38-de2e80836112	OPTIONS	http://localhost:3000	/auth
+20220413	23:11:28	62da6a15-7f9b-4bdd-8bab-84e64a588cad	POST	http://localhost:3000	/auth
+20220413	23:11:34	e2b68261-0e01-486a-8999-37ea8dbf03d7	OPTIONS	http://localhost:3000	/auth
+20220413	23:11:34	e758308a-9282-4178-b627-ccc22f201b19	POST	http://localhost:3000	/auth
+20220413	23:11:40	1ebd7118-0cfe-4b72-b765-992a66257be5	OPTIONS	http://localhost:3000	/auth
+20220413	23:11:40	8c926a8c-091d-491d-8392-340e85ff1ee4	POST	http://localhost:3000	/auth
