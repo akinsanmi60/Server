@@ -128,3 +128,8 @@
 20220417	08:52:51	2869e947-b413-41c9-b878-dd6485aa33bb	GET	undefined	/css/style.css
 20220417	08:52:52	8eb4a1e1-478a-4957-aba3-cc4ed8204cbc	GET	undefined	/favicon.ico
 20220417	08:53:33	b16b35a0-c919-4033-a404-ef6e3ee743c8	GET	undefined	/css/style.css
+20220417	09:49:43	649c3eb3-f091-49c6-9134-fba9c49494d6	GET	undefined	/
+20220417	09:49:43	60fbea4c-cd6a-4716-b4a3-e194a6e620df	GET	undefined	/css/style.css
+20220417	09:49:43	99113524-d42d-4e28-a77d-2a5c6419bfc2	GET	undefined	/favicon.ico
+20220417	09:54:00	3b098aa3-237c-4ea9-84d2-3d92fbd52eec	GET	undefined	/register
+20220417	09:54:00	53702f98-b851-4539-8d99-b44f489c7045	GET	undefined	/favicon.ico
