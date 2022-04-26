@@ -13,6 +13,7 @@ const userSchema = new Schema({
   userEmail: {
     type: String,
     required: true,
+    set: (v) => v.toLowerCase,
   },
   roles: {
     User: {
