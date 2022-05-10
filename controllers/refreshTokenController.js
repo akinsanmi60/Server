@@ -1,4 +1,4 @@
-const User = require("../model/User");
+const User = require("../model/user");
 const jwt = require("jsonwebtoken");
 
 const handleRefreshToken = async (req, res) => {
@@ -7,19 +7,18 @@ const handleRefreshToken = async (req, res) => {
   //so if it exist, it will be set to refreshToken
   const refreshToken = cookies.jwt;
 
-  const foundUser = await User.findOne({ refreshToken }).exec();
-  if (!foundUser) return res.sendStatus(403); //Forbidden
+  const user = await User.findOne({ refreshToken }).exec();
+  if (!user) return res.sendStatus(403); //Forbidden
   // evaluate jwt
   jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
-    if (err || foundUser.userEmail !== decoded.userEmail)
-      return res.sendStatus(403);
-    const roles = Object.values(foundUser.roles);
+    if (err || user.email !== decoded.email) return res.sendStatus(403);
+    const roles = Object.values(user.role);
     const accessToken = jwt.sign(
       {
-        UserInfo: {
-          userEmail: decoded.userEmail,
-          roles: roles,
-        },
+        user_id: user._id,
+        role: roles,
+        email: user.email,
+        name: user.name,
       },
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: "30s" }
