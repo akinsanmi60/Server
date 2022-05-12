@@ -72,7 +72,8 @@ const login = async (data, res) => {
           user_id: user._id,
           role: user.role,
           email: user.email,
-          name: user.name,
+          firstname: user.firstname,
+          lastname: user.lastname,
         },
         process.env.JWT_SECRET,
         {
@@ -85,7 +86,8 @@ const login = async (data, res) => {
           user_id: user._id,
           role: user.role,
           email: user.email,
-          name: user.name,
+          firstname: user.firstname,
+          lastname: user.lastname,
         },
         process.env.REFRESH_TOKEN_SECRET,
         { expiresIn: "1d" }
@@ -104,9 +106,10 @@ const login = async (data, res) => {
 
       // this can be send to FE as show the user details but is optional
       let profile = {
-        email: user.email,
         role: user.role,
-        name: user.name,
+        email: user.email,
+        firstname: user.firstname,
+        lastname: user.lastname,
       };
       // combing the token and profile, and can be send back as response to the FE
       let result = {
@@ -181,7 +184,7 @@ const forgotPassword = async (data, res) => {
     // here the code is hashed for protecting
     const passwordResetCode = await bcrypt.hash(code.toString(), 16);
     await user.update({ passwordResetCode: passwordResetCode });
-    forgotPasswordSender(user.email, user.name, code);
+    forgotPasswordSender(user.email, user.lastname, user.firstname, code);
     return res.status(404).json({
       message: "Verication code sent to your email",
       success: true,
@@ -279,7 +282,8 @@ const refreshToken = async (req, res) => {
         user_id: user._id,
         role: roles,
         email: user.email,
-        name: user.name,
+        firstname: user.firstname,
+        lastname: user.lastname,
       },
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: "30s" }
