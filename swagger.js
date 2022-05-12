@@ -44,7 +44,8 @@ const doc = {
             $password: "Password123#",            
         },
         RegisterModel: {
-            $name: "John Snow",
+            $firstname: "John",
+            $lastname: "Snow",
             $email: "mail@mail.com",
             $password: "Password123#", 
         },

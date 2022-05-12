@@ -957,9 +957,13 @@
     "RegisterModel": {
       "type": "object",
       "properties": {
-        "name": {
+        "firstname": {
           "type": "string",
-          "example": "John Snow"
+          "example": "John"
+        },
+        "lastname": {
+          "type": "string",
+          "example": "Snow"
         },
         "email": {
           "type": "string",
@@ -971,7 +975,8 @@
         }
       },
       "required": [
-        "name",
+        "firstname",
+        "lastname",
         "email",
         "password"
       ]

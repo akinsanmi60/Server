@@ -6,8 +6,7 @@ const { welcomeSender, forgotPasswordSender } = require("../mailers/senders");
 
 const register = async (data, role, res) => {
   try {
-    let { firstname, lastname, email } = data;
-    const userTaken = await validateEmail(email.toLowerCase);
+    const userTaken = await validateEmail(data.email);
     if (userTaken) {
       return res.status(400).json({
         email: "Email is already taken",
@@ -19,8 +18,7 @@ const register = async (data, role, res) => {
     // this create a round integer for email verification
     const code = crypto.randomInt(100000, 1000000);
     const newUser = new User({
-      firstname: firstname,
-      lastname: lastname,
+      ...data,
       password: hashedPassword,
       verificationCode: code,
       role,
