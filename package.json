@@ -1,13 +1,14 @@
 {
-  "name": "15tut",
+  "name": "serverapi",
   "version": "1.0.0",
-  "description": "MongoDB tutorial",
+  "description": "MongoDB",
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "dev": "nodemon server"
+    "dev": "nodemon server",
+    "start-gendoc": " node swagger.js"
   },
-  "author": "Dave Gray",
+  "author": "Akinsanmi",
   "license": "ISC",
   "engines": {
     "node": "14.x"

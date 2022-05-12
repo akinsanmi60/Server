@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Rocktech (Video and News App) API",
-    "description": "API for the tutorial on building mobile app by <b>Mark's Coding Spot</b> using NodeJS."
+    "title": "AceFarmMarket (Video and News App) API",
+    "description": "API for the AceFarmMarket"
   },
   "host": "localhost:5000",
   "basePath": "/",
@@ -87,6 +87,13 @@
         }
       }
     },
+    "/auth/logout": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/auth/verify": {
       "post": {
         "tags": [
@@ -103,6 +110,13 @@
             }
           }
         ],
+        "responses": {}
+      }
+    },
+    "/auth/refreshToken": {
+      "get": {
+        "description": "",
+        "parameters": [],
         "responses": {}
       }
     },
@@ -200,9 +214,6 @@
           "201": {
             "description": "Created"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -231,9 +242,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
@@ -305,9 +313,6 @@
           "201": {
             "description": "Created"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "422": {
             "description": "Unprocessable Entity"
           },
@@ -347,9 +352,6 @@
         "responses": {
           "201": {
             "description": "Created"
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "422": {
             "description": "Unprocessable Entity"
@@ -405,9 +407,6 @@
         "responses": {
           "204": {
             "description": "No Content"
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
@@ -611,9 +610,6 @@
           "201": {
             "description": "Created"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "422": {
             "description": "Unprocessable Entity"
           },
@@ -671,9 +667,6 @@
           "201": {
             "description": "Created"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "422": {
             "description": "Unprocessable Entity"
           },
@@ -728,9 +721,6 @@
         "responses": {
           "204": {
             "description": "No Content"
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
@@ -819,9 +809,6 @@
           "201": {
             "description": "Created"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "422": {
             "description": "Unprocessable Entity"
           },
@@ -879,9 +866,6 @@
           "201": {
             "description": "Created"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "422": {
             "description": "Unprocessable Entity"
           },
@@ -936,9 +920,6 @@
         "responses": {
           "204": {
             "description": "No Content"
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"

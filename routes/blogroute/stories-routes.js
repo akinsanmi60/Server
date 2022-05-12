@@ -41,6 +41,7 @@ router.get("/stories", async (req, res) => {
   await getAll(req, res);
 });
 
+//this is for getting top stories
 router.get("/stories/top", async (req, res) => {
   // #swagger.tags = ['Posts']
 

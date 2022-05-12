@@ -2,8 +2,8 @@ const router = require("express").Router();
 const {
   ensureAuthenticated,
   ensureAuthorized,
-} = require("../middleware/auth-middleware");
-const { validationRules, validate } = require("../validations/video-validator");
+} = require("../../middleware/auth-middleware");
+const { validationRules, validate } = require("../../validations/video-validator");
 const {
   addOne,
   removeOne,
@@ -19,6 +19,7 @@ router.get("/videos", async (req, res) => {
   await getAll(req, res);
 });
 
+//route for getting to videos
 router.get("/videos/top", async (req, res) => {
   // #swagger.tags = ['Posts']
 

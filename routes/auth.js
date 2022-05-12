@@ -1,12 +1,14 @@
 const router = require("express").Router();
 const { validationRules, validate } = require("../validations/user-validator");
 const {
-  login,
+ login,
   register,
   verify,
   forgotPassword,
   resetPassword,
   changePassword,
+  refreshToken,
+  logout,
 } = require("../controllers/auth-controller");
 const { ensureAuthenticated } = require("../middleware/auth-middleware");
 const {
@@ -35,15 +37,25 @@ router.post("/register", validationRules(), validate, async (req, res) => {
   await register(req.body, "user", res);
 });
 
+router.get("/logout", async (req, res) => {
+  res.clearCookie()
+return  res.redirect("/")
+});
+
 router.post("/verify", async (req, res) => {
   /*  #swagger.tags = ['Auth']
-    	#swagger.parameters['obj'] = {
+      #swagger.parameters['obj'] = {
             in: 'body',
             required: true,
             schema: { $ref: "#/definitions/VerifyEmailModel" }
     } */
   await verify(req.body, res);
 });
+
+router.get("/refreshToken", async (req, res) => {
+  await register(req.body, res);
+});
+
 
 router.post("/forgotPassword", async (req, res) => {
   /*  #swagger.tags = ['Auth']

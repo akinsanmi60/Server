@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { ensureAuthenticated } = require("../../middleware/auth-middleware");
+const { ensureAuthenticated, ensureAuthorized, } = require("../../middleware/auth-middleware");
 const {
   validationRules,
   validate,
@@ -28,7 +28,7 @@ router.post(
   }
 );
 
-router.delete("/comments/:id", ensureAuthenticated, async (req, res) => {
+router.delete("/comments/:id", ensureAuthenticated, ensureAuthorized(["admin"]), async (req, res) => {
   /*  #swagger.tags = ['Posts']
         #swagger.security = [{
         "Authorization": []
@@ -36,5 +36,4 @@ router.delete("/comments/:id", ensureAuthenticated, async (req, res) => {
     */
   await removeOne(req, res);
 });
-
 module.exports = router;

@@ -6,11 +6,17 @@ const validationRules = () => {
     ]
 };
 
-const validate =(req, res, next) => {
+const validate = (req, res, next) => {
+
+    //this check the req pass as parameter
     const errors = validationResult(req);
+
+    // if error is empty
     if(errors.isEmpty()) {
         return next();
     }
+
+    // if there is error, it will be map thru
     const resultErrors = [];
     errors.array().map((err) => resultErrors.push({[err.param]: err.mss}));
     resultErrors.push({message: "Action unsuccessful"});
