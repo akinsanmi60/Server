@@ -1,6 +1,6 @@
 const { email } = require("./config");
 
-const welcomeSender = (recipient, name, code) => {
+const welcomeSender = (recipient, firstname, lastname, code) => {
   console.log("Called in Sender");
     email
     .send({
@@ -9,7 +9,7 @@ const welcomeSender = (recipient, name, code) => {
         to: recipient,        
       },
       locals: {
-        name: name,
+        name: [firstname],
         code: code
       }
     })
@@ -17,7 +17,7 @@ const welcomeSender = (recipient, name, code) => {
     .catch(console.error);
 };
 
-const forgotPasswordSender = (recipient, name, code) => {
+const forgotPasswordSender = (recipient, firstname, lastname, code) => {
     email
     .send({
       template: "forgot",
@@ -25,7 +25,7 @@ const forgotPasswordSender = (recipient, name, code) => {
         to: recipient,        
       },
       locals: {
-        name: name,
+        name: [firstname],
         code: code
       }
     })
