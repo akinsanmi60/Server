@@ -50,7 +50,8 @@ const doc = {
             $password: "Password123#", 
         },
         UpdateUserModel: {
-            $name: "John Snow",
+           $firstname: "John",
+            $lastname: "Snow",
         },
         CategoryModel: {
             $title: "Comedy",

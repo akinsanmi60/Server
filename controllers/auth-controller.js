@@ -5,7 +5,12 @@ const User = require("../model/user");
 const { welcomeSender, forgotPasswordSender } = require("../mailers/senders");
 
 const register = async (data, role, res) => {
+  const { firstname, lastname, email, password } = data;
   try {
+    if (!firstname || !lastname || !email || !password)
+      return res
+        .status(400)
+        .json({ message: "Please provide email  and password are required." });
     const userTaken = await validateEmail(data.email);
     if (userTaken) {
       return res.status(400).json({
@@ -14,7 +19,7 @@ const register = async (data, role, res) => {
         success: false,
       });
     }
-    const hashedPassword = await bcrypt.hash(data.password, 16);
+    const hashedPassword = await bcrypt.hash(data.password, 10);
     // this create a round integer for email verification
     const code = crypto.randomInt(100000, 1000000);
     const newUser = new User({
@@ -28,7 +33,6 @@ const register = async (data, role, res) => {
     await newUser.save();
     welcomeSender(
       newUser.email,
-      newUser.lastname,
       newUser.firstname,
       newUser.verificationCode
     );
@@ -51,10 +55,10 @@ const login = async (data, res) => {
     if (!email || !password)
       return res
         .status(400)
-        .json({ message: "Username and password are required." });
+        .json({ message: "Please provide email  and password are required." });
 
     //checking if the email exist in the db
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).select("+password");
 
     // if no user with the same email found
     if (!user) {
@@ -75,9 +79,9 @@ const login = async (data, res) => {
           firstname: user.firstname,
           lastname: user.lastname,
         },
-        process.env.JWT_SECRET,
+        process.env.ACCESS_TOKEN_SECRET,
         {
-          expiresIn: "60s",
+          expiresIn: "30s",
         }
       );
 
@@ -184,7 +188,7 @@ const forgotPassword = async (data, res) => {
     // here the code is hashed for protecting
     const passwordResetCode = await bcrypt.hash(code.toString(), 16);
     await user.update({ passwordResetCode: passwordResetCode });
-    forgotPasswordSender(user.email, user.lastname, user.firstname, code);
+    forgotPasswordSender(user.email, user.firstname, code);
     return res.status(404).json({
       message: "Verication code sent to your email",
       success: true,

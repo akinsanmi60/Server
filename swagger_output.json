@@ -984,13 +984,18 @@
     "UpdateUserModel": {
       "type": "object",
       "properties": {
-        "name": {
+        "firstname": {
           "type": "string",
-          "example": "John Snow"
+          "example": "John"
+        },
+        "lastname": {
+          "type": "string",
+          "example": "Snow"
         }
       },
       "required": [
-        "name"
+        "firstname",
+        "lastname"
       ]
     },
     "CategoryModel": {

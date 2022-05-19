@@ -53,16 +53,6 @@ app.use(paginate.middleware(process.env.LIMIT, process.env.MAX_LIMIT));
 app.use(router);
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
-app.all("*", (req, res) => {
-  res.status(404);
-  if (req.accepts("html")) {
-    res.sendFile(path.join(__dirname, "views", "404.html"));
-  } else if (req.accepts("json")) {
-    res.json({ error: "404 Not Found" });
-  } else {
-    res.type("txt").send("404 Not Found");
-  }
-});
 
 app.use(errorHandler);
 
